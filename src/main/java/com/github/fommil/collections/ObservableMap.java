@@ -1,32 +1,19 @@
-/*
- * Created 03-Aug-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.collections;
 
+import com.github.fommil.collections.ObservableCollection.CollectionListener;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import lombok.*;
+import lombok.experimental.Accessors;
+
+import javax.annotation.concurrent.NotThreadSafe;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.concurrent.NotThreadSafe;
-import lombok.Delegate;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ListenerSupport;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.Accessors;
-import com.github.fommil.collections.ObservableCollection.CollectionListener;
+import java.util.*;
 
 /**
  * Compliments {@link ObservableCollection} for a {@link Map}.

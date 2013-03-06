@@ -1,23 +1,19 @@
-/*
- * Created 01-Jun-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.beans;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-import java.awt.Image;
+import lombok.Delegate;
+import lombok.Getter;
+import lombok.extern.java.Log;
+
+import javax.annotation.Nullable;
+import java.awt.*;
 import java.beans.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
-import lombok.Delegate;
-import lombok.Getter;
-import lombok.extern.java.Log;
 
 /**
  * Abstracts the JavaBeans API providing sensible actions and accessors.

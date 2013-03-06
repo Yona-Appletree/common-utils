@@ -1,12 +1,8 @@
-/*
- * Created 22-Jun-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.beans;
 
 import com.google.common.base.Objects;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyVetoException;
 import java.beans.VetoableChangeListener;

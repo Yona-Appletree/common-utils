@@ -1,20 +1,14 @@
-/*
- * Created 01-Jun-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.beans.editors;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.FlowLayout;
+import org.jdesktop.swingx.JXButton;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyEditor;
 import java.beans.PropertyEditorSupport;
-import javax.swing.*;
-import org.jdesktop.swingx.JXButton;
 
 /**
  * Allows {@link PropertyEditor}s to be written as popups (by extending this)

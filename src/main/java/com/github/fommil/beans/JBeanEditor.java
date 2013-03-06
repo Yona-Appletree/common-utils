@@ -1,26 +1,23 @@
-/*
- * Created 01-Jun-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.beans;
 
+import com.github.fommil.beans.BeanHelper.Property;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
-import static com.google.common.collect.Iterables.filter;
 import com.google.common.collect.Lists;
-import java.awt.*;
-import java.beans.*;
-import java.util.Collections;
-import java.util.List;
-import javax.swing.*;
-import javax.swing.table.*;
 import lombok.Getter;
 import lombok.extern.java.Log;
 import org.jdesktop.swingx.JXImageView;
 import org.jdesktop.swingx.JXTable;
-import com.github.fommil.beans.BeanHelper.Property;
+
+import javax.swing.*;
+import javax.swing.table.*;
+import java.awt.*;
+import java.beans.*;
+import java.util.Collections;
+import java.util.List;
+
+import static com.google.common.collect.Iterables.filter;
 
 /**
  * An automatically-generated Swing Form for editing arbitrary objects

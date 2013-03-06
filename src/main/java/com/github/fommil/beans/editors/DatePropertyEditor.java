@@ -1,20 +1,16 @@
-/*
- * Created 01-Jun-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.beans.editors;
 
-import java.awt.MouseInfo;
+import org.jdesktop.swingx.JXMonthView;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyEditor;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.JDialog;
-import org.jdesktop.swingx.JXMonthView;
 
 /**
  * {@link PropertyEditor} that brings up a {@link JXMonthView}.

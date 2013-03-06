@@ -1,27 +1,22 @@
-/*
- * Created 20-Jun-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package uk.me.fommil.utils.beans;
 
-import java.awt.BorderLayout;
+import com.github.fommil.beans.BeanHelper;
+import com.github.fommil.beans.JBeanEditor;
+import com.github.fommil.beans.editors.DatePropertyEditor;
+import com.github.fommil.beans.editors.FilePropertyEditor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.java.Log;
+
+import javax.swing.*;
+import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyEditorManager;
 import java.beans.SimpleBeanInfo;
 import java.io.File;
 import java.util.Date;
-import javax.swing.JFrame;
-
-import com.github.fommil.beans.BeanHelper;
-import com.github.fommil.beans.JBeanEditor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.java.Log;
-import com.github.fommil.beans.editors.DatePropertyEditor;
-import com.github.fommil.beans.editors.FilePropertyEditor;
 
 /**
  * Interactive demo.

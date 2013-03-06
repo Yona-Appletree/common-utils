@@ -1,25 +1,19 @@
-/*
- * Copyright Samuel Halliday 2009
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.jpa;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.common.io.Files;
+import lombok.Cleanup;
+import lombok.extern.java.Log;
+
+import javax.persistence.*;
 import java.io.File;
 import java.io.Reader;
 import java.lang.annotation.Annotation;
 import java.nio.charset.Charset;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-import javax.persistence.*;
-import lombok.Cleanup;
-import lombok.extern.java.Log;
+import java.util.*;
 
 /**
  * Generic CRUD (CREATE, READ, UPDATE, DELETE) DAO (Data Access Object) for {@link Entity} types.

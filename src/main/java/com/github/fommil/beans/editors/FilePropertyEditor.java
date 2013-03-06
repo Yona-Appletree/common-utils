@@ -1,16 +1,12 @@
-/*
- * Created 01-Jun-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.beans.editors;
 
+import lombok.extern.java.Log;
+
+import javax.annotation.concurrent.NotThreadSafe;
+import javax.swing.*;
 import java.beans.PropertyEditor;
 import java.io.File;
-import javax.annotation.concurrent.NotThreadSafe;
-import javax.swing.JFileChooser;
-import lombok.extern.java.Log;
 
 /**
  * {@link PropertyEditor} that brings up a {@link JFileChooser}.

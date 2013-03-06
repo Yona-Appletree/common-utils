@@ -1,23 +1,19 @@
-/*
- * Created 03-Aug-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.collections;
 
-import com.github.fommil.collections.ObservableMap;
+import com.github.fommil.collections.ObservableMap.Change;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.junit.Test;
+
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.junit.Test;
+
 import static org.junit.Assert.*;
-import com.github.fommil.collections.ObservableMap.Change;
 
 /**
  *

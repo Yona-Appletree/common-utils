@@ -1,7 +1,4 @@
-/*
- * Copyright Samuel Halliday 2008
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.utils;
 
 /**

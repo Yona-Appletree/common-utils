@@ -1,15 +1,13 @@
-/*
- * Copyright Samuel Halliday 2010
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.utils;
 
 import com.google.common.base.Preconditions;
-import java.io.File;
-import java.util.logging.Level;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+
+import java.io.File;
+import java.util.logging.Level;
 
 /**
  * Workarounds for bugs in Java or third party libraries.

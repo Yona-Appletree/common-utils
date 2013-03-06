@@ -1,19 +1,10 @@
-/*
- * Created 02-Aug-2012
- * 
- * Copyright Samuel Halliday 2012
- * PROPRIETARY/CONFIDENTIAL. Use is subject to licence terms.
- */
+// Copyright (c) 2013 Samuel Halliday
 package com.github.fommil.lucene;
 
 import com.github.fommil.utils.GuruMeditationFailure;
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.List;
-import java.util.Set;
 import org.apache.lucene.analysis.FilteringTokenFilter;
 import org.apache.lucene.analysis.StopFilter;
 import org.apache.lucene.analysis.Tokenizer;
@@ -22,6 +13,11 @@ import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 import org.apache.lucene.util.Version;
 import org.tartarus.snowball.SnowballProgram;
 import org.tartarus.snowball.ext.EnglishStemmer;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Convenience methods for using the Lucene
