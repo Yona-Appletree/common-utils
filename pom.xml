@@ -8,6 +8,8 @@
     <artifactId>common-utils</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- mvn clean deploy -Psonatype-oss-release -->
+
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
@@ -68,14 +70,14 @@
             <!-- needed to use com.github.fommil.beans -->
             <groupId>org.swinglabs.swingx</groupId>
             <artifactId>swingx-all</artifactId>
-            <version>1.6.4</version>
+            <version>1.6.5-1</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <!-- needed to use com.github.fommil.lucene -->
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers</artifactId>
-            <version>3.6.1</version>
+            <version>3.6.2</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -89,7 +91,7 @@
             <!-- needed to use parts of com.github.fommil.swing -->
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>3.0</version>
+            <version>3.1.1</version>
             <optional>true</optional>
         </dependency>
 
@@ -97,7 +99,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -134,33 +136,6 @@
                 <configuration>
                     <!-- <doCheck>true</doCheck> -->
                 </configuration>
-            </plugin>
-            <!-- http://stackoverflow.com/questions/4725668 -->
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
