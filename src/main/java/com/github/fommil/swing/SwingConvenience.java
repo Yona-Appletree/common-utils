@@ -127,6 +127,16 @@ public final class SwingConvenience {
     }
 
     /**
+     * @param window
+     * @see <a href="http://stackoverflow.com/questions/13064607">FullScreen Fail to Receive Keyboard</a>.
+     */
+    public static void fullscreen(Window window) {
+        GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().setFullScreenWindow(window);
+        window.setVisible(false);
+        window.setVisible(true);
+    }
+
+    /**
      * @param component
      * @return
      */
