@@ -27,8 +27,8 @@
     </licenses>
     <scm>
         <url>https://github.com/fommil/common-utils</url>
-        <connection>scm:git:git//github.com/fommil/common-utils.git</connection>
-        <developerConnection>scm:git:git//github.com/fommil/common-utils.git</developerConnection>
+        <connection>scm:git:git@github.com:fommil/common-utils.git</connection>
+        <developerConnection>scm:git:git@github.com:fommil/common-utils.git</developerConnection>
     </scm>
     <developers>
         <developer>
