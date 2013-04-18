@@ -62,7 +62,7 @@ public abstract class CrudDao<K, T> {
             File hibernateProps = new File(JPA_PROPERTIES);
             if (hibernateProps.exists()) {
                 Properties properties = new Properties();
-                @Cleanup(quietly = true) Reader reader = Files.newReader(hibernateProps, Charset.defaultCharset());
+                @Cleanup Reader reader = Files.newReader(hibernateProps, Charset.defaultCharset());
                 properties.load(reader);
                 properties.put("javax.persistence.jtaDataSource", "");
                 properties.put("javax.persistence.nonJtaDataSource", "");

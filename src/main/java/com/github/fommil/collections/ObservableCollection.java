@@ -55,7 +55,6 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 @NotThreadSafe
-@ListenerSupport(ObservableCollection.CollectionListener.class)
 @EqualsAndHashCode(of = "delegate")
 public class ObservableCollection<T> implements Collection<T> {
 
@@ -74,13 +73,13 @@ public class ObservableCollection<T> implements Collection<T> {
     public static final class Change<T> {
 
         @NonNull
-        private final ObservableCollection<T> collection;
+        protected final ObservableCollection<T> collection;
 
         @NonNull
-        private final Collection<T> elementsAdded, elementsRemoved;
+        protected final Collection<T> elementsAdded, elementsRemoved;
 
         @Accessors(fluent = true)
-        private final boolean wasAdded, wasRemoved;
+        protected final boolean wasAdded, wasRemoved;
 
     }
 
@@ -259,5 +258,20 @@ public class ObservableCollection<T> implements Collection<T> {
     @Override
     public String toString() {
         return delegate.toString();
+    }
+
+    private final transient Collection<CollectionListener<T>> listeners = Lists.newCopyOnWriteArrayList();
+
+    public void addCollectionListener(CollectionListener<T> listener) {
+        listeners.add(listener);
+    }
+
+    public void removeCollectionListener(CollectionListener<T> listener) {
+        listeners.remove(listener);
+    }
+
+    private void fireOnCollectionChanged(Change<T> change) {
+        for (CollectionListener<T> listener : listeners)
+            listener.onCollectionChanged(change);
     }
 }

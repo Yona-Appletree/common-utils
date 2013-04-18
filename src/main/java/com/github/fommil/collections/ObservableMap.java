@@ -28,7 +28,6 @@ import java.util.*;
  */
 @RequiredArgsConstructor
 @NotThreadSafe
-@ListenerSupport(ObservableMap.MapListener.class)
 @EqualsAndHashCode(of = "delegate")
 public class ObservableMap<K, V> implements Map<K, V> {
 
@@ -272,5 +271,20 @@ public class ObservableMap<K, V> implements Map<K, V> {
     @Override
     public String toString() {
         return delegate.toString();
+    }
+
+    private final transient Collection<MapListener<K, V>> listeners = Lists.newCopyOnWriteArrayList();
+
+    public void addMapListener(MapListener<K, V> listener) {
+        listeners.add(listener);
+    }
+
+    public void removeMapListener(MapListener<K, V> listener) {
+        listeners.remove(listener);
+    }
+
+    private void fireOnMapChanged(Change<K, V> change) {
+        for (MapListener<K, V> listener : listeners)
+            listener.onMapChanged(change);
     }
 }
