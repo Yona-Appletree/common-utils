@@ -31,8 +31,10 @@ import java.util.*;
  * @author Samuel Halliday
  * @see <a href="http://code.google.com/p/hibernate-generic-dao/">Hibernate Generic DAO</a>
  * @see <a href="http://code.google.com/p/generic-dao/">Generic DAO</a>
+ * @deprecated use Spring Data JPA, e.g. see Zibaldone.
  */
 @Log
+@Deprecated
 public abstract class CrudDao<K, T> {
 
     private static final String JPA_PROPERTIES = "jpa.properties";
