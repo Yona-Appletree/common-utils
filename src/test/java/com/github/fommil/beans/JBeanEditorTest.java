@@ -1,8 +1,6 @@
 // Copyright (c) 2013 Samuel Halliday
-package uk.me.fommil.utils.beans;
+package com.github.fommil.beans;
 
-import com.github.fommil.beans.BeanHelper;
-import com.github.fommil.beans.JBeanEditor;
 import com.github.fommil.beans.editors.DatePropertyEditor;
 import com.github.fommil.beans.editors.FilePropertyEditor;
 import lombok.Getter;

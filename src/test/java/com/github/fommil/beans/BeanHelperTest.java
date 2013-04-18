@@ -1,5 +1,5 @@
 // Copyright (c) 2013 Samuel Halliday
-package uk.me.fommil.utils.beans;
+package com.github.fommil.beans;
 
 /**
  * @author Samuel Halliday
