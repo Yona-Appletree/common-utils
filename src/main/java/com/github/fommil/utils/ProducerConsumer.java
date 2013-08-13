@@ -2,8 +2,8 @@
 package com.github.fommil.utils;
 
 import java.util.Iterator;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -30,87 +30,98 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public final class ProducerConsumer<T> implements Iterator<T> {
 
-    private final AtomicBoolean stopSignal = new AtomicBoolean();
+  private final AtomicBoolean stopSignal = new AtomicBoolean();
 
-    private final Queue<T> queue = new ConcurrentLinkedQueue<T>();
+  private final BlockingQueue<T> queue;
 
-    private final AtomicBoolean closed = new AtomicBoolean();
+  private final AtomicBoolean closed = new AtomicBoolean();
 
-    private final ReentrantLock lock = new ReentrantLock();
+  private final ReentrantLock lock = new ReentrantLock();
 
-    private final Condition change = lock.newCondition();
+  private final Condition change = lock.newCondition();
 
-    /**
-     * Instruct the implementation to truncate at its
-     * earliest convenience and dispose of resources.
-     * Should only be used by the consumer.
-     */
-    public void stop() {
-        stopSignal.set(true);
+  public ProducerConsumer() {
+    queue = new LinkedBlockingQueue<T>();
+  }
+
+  public ProducerConsumer(int size) {
+    queue = new LinkedBlockingQueue<T>(size);
+  }
+
+  /**
+   * Instruct the implementation to truncate at its
+   * earliest convenience and dispose of resources.
+   * Should only be used by the consumer.
+   */
+  public void stop() {
+    stopSignal.set(true);
+  }
+
+  /**
+   * Make an element available for the consumer.
+   * Should only be used by the producer.
+   */
+  public void produce(T el) {
+    try {
+      queue.put(el);
+    } catch (InterruptedException e) {
+      produce(el);
     }
-
-    /**
-     * Make an element available for the consumer.
-     * Should only be used by the producer.
-     */
-    public void produce(T el) {
-        queue.add(el);
-        lock.lock();
-        try {
-            change.signal();
-        } finally {
-            lock.unlock();
-        }
+    lock.lock();
+    try {
+      change.signal();
+    } finally {
+      lock.unlock();
     }
+  }
 
-    /**
-     * Finish producing.
-     * Should only be used by the producer.
-     */
-    public void close() {
-        lock.lock();
-        try {
-            closed.set(true);
-            change.signal();
-        } finally {
-            lock.unlock();
-        }
+  /**
+   * Finish producing.
+   * Should only be used by the producer.
+   */
+  public void close() {
+    lock.lock();
+    try {
+      closed.set(true);
+      change.signal();
+    } finally {
+      lock.unlock();
     }
+  }
 
-    /**
-     * Should only be used by the producer.
-     *
-     * @return `true` if the consumer instructed the producer to stop.
-     */
-    public boolean stopped() {
-        return stopSignal.get();
+  /**
+   * Should only be used by the producer.
+   *
+   * @return `true` if the consumer instructed the producer to stop.
+   */
+  public boolean stopped() {
+    return stopSignal.get();
+  }
+
+  @Override
+  public boolean hasNext() {
+    if (!queue.isEmpty()) return true;
+    else if (closed.get()) return !queue.isEmpty(); // non-locking optimisation
+    lock.lock();
+    try {
+      if (closed.get()) return !queue.isEmpty();
+      try {
+        change.await();
+      } catch (InterruptedException ignored) {
+      }
+    } finally {
+      lock.unlock();
     }
+    return hasNext(); // recursive, but should never go too deep
+  }
 
+  @Override
+  public T next() {
+    return queue.poll();
+  }
 
-    @Override
-    public boolean hasNext() {
-        if (!queue.isEmpty()) return true;
-        else if (closed.get()) return !queue.isEmpty(); // non-locking optimisation
-        lock.lock();
-        try {
-            if (closed.get()) return !queue.isEmpty();
-            try {
-                change.await();
-            } catch (InterruptedException ignored) {
-            }
-        } finally {
-            lock.unlock();
-        }
-        return hasNext(); // recursive, but should never go too deep
-    }
-
-    @Override
-    public T next() {
-        return queue.poll();
-    }
-
-    @Override
-    public void remove() {
-        throw new UnsupportedOperationException("remove not supported");
-    }
+  @Override
+  public void remove() {
+    throw new UnsupportedOperationException("remove not supported");
+  }
 }
